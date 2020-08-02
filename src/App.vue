@@ -1,13 +1,27 @@
 <template>
   <div id="app">
-    <h3>Hello World</h3>
+    <div class="info">
+      {{ starWarsInfo }}
+    </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "App",
   components: {},
+  data() {
+    return {
+      starWarsInfo: null,
+    };
+  },
+  mounted() {
+    axios
+      .get(" https://swapi.dev/api/people/1/")
+      .then((res) => (this.starWarsInfo = res));
+  },
 };
 </script>
 
